@@ -24,6 +24,10 @@ func MainRouter() *http.ServeMux {
 		controllers.DinoDisplay(w, r)
 	})
 
+	mainRouter.HandleFunc("/about", func(w http.ResponseWriter, r *http.Request) {
+		controllers.AboutDisplay(w, r)
+	})
+
 	mainRouter.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" {
 			controllers.NotFoundDisplay(w, r)

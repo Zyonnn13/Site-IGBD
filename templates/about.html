@@ -1,0 +1,230 @@
+{{define "about"}}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos - IGDB Gaming</title>
+    <link rel="stylesheet" href="/static/css/store.css">
+    <link rel="stylesheet" href="/static/css/about.css">
+    <link rel="icon" type="image/png" href="/static/images/favicon.png">
+</head>
+
+<body>
+
+    <header class="store-header">
+        <a href="/" class="logo">IGDB</a>
+        <nav>
+            <a href="/">Accueil</a>
+            <a href="/level5">Level-5</a>
+            <a href="/nintendo">Nintendo</a>
+            <a href="/sega">SEGA</a>
+            <a href="/ubisoft">Ubisoft</a>
+            <a href="/favorites">Favoris</a>
+            <a href="/about" class="active">À propos</a>
+        </nav>
+        <form action="/search" method="get" class="search-form">
+            <input type="text" name="query" placeholder="Rechercher un jeu..." class="search-input">
+            <button type="submit" class="search-btn">🔍</button>
+        </form>
+    </header>
+
+    <main class="about-container">
+
+        <section class="about-hero">
+            <h1>À propos du projet</h1>
+            <p class="about-subtitle">Groupie Tracker – Site web exploitant l'API IGDB</p>
+        </section>
+
+        <section class="about-intro">
+            <h2>Présentation</h2>
+            <p>
+                Ce projet est un site web développé en <strong>Go</strong> qui exploite
+                l'<strong>API IGDB</strong> (Internet Game Database) pour afficher les catalogues de jeux vidéo
+                de différents studios : SEGA, Nintendo, Ubisoft et Level-5. Le site permet de parcourir,
+                filtrer, rechercher et sauvegarder en favoris des jeux vidéo.
+            </p>
+        </section>
+
+        <section class="about-api">
+            <h2>API et Endpoints utilisés</h2>
+            <p>L'API utilisée est <strong>IGDB (api.igdb.com/v4)</strong>, une API REST qui retourne des données au
+                format JSON. L'accès nécessite un token d'authentification Twitch avec renouvellement automatique.</p>
+            <div class="endpoints-list">
+                <div class="endpoint-card">
+                    <h3>/v4/games</h3>
+                    <p>Récupérer les jeux par studio, les détails d'un jeu, et les DLCs associés.</p>
+                </div>
+                <div class="endpoint-card">
+                    <h3>/v4/search</h3>
+                    <p>Rechercher des jeux par nom via la barre de recherche.</p>
+                </div>
+                <div class="endpoint-card">
+                    <h3>OAuth Token</h3>
+                    <p>Authentification via l'API Twitch avec gestion automatique du renouvellement du token.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-features">
+            <h2>Fonctionnalités implémentées</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🔍</span>
+                    <h3>FT1 – Recherche</h3>
+                    <p>Recherche sur le nom du jeu. Les résultats affichent la couverture, le nom et le résumé.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🎯</span>
+                    <h3>FT2 – Filtres</h3>
+                    <p>Filtrage cumulatif sur 3 propriétés : catégorie, genre et plateforme. Les filtres se combinent
+                        entre eux.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📄</span>
+                    <h3>FT3 – Pagination</h3>
+                    <p>Affichage par lots de 20 jeux avec navigation entre les pages. Les filtres sont conservés lors du
+                        changement de page.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">⭐</span>
+                    <h3>FT4 – Favoris</h3>
+                    <p>Ajout et suppression de jeux en favoris. Les données sont persistées dans un fichier JSON.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🎮</span>
+                    <h3>Bonus – Page 404</h3>
+                    <p>Page d'erreur thème rétro-gaming avec effets glitch, scanlines CRT et mini-jeu Dino.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🔐</span>
+                    <h3>Bonus – Token API</h3>
+                    <p>Gestion automatique du token IGDB avec renouvellement via l'API Twitch.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-faq">
+            <h2>FAQ – Synthèse du projet</h2>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    Comment avez-vous décomposé le projet ? Quelles ont été les phases clés ?
+                </button>
+                <div class="faq-answer">
+                    <p>Le projet a été décomposé en plusieurs phases :</p>
+                    <ul>
+                        <li><strong>Phase 1 – Choix de l'API :</strong> J'ai choisi l'API IGDB car elle offre une grande
+                            richesse de données sur les jeux vidéo (genres, plateformes, couvertures, DLCs).J'ai testé
+                            les endpoints avec Postman pour valider les données retournées.</li>
+                        <li><strong>Phase 2 – Architecture :</strong> J'ai structuré le projet en suivant le pattern MVC
+                            (Models, Controllers, Services, Routers, Templates) pour garder un code organisé et
+                            maintenable.</li>
+                        <li><strong>Phase 3 – Pages de base :</strong> Création de la page d'accueil avec le carrousel
+                            tirer d'une video youtube, puis les pages de catalogue par studio (SEGA, Nintendo, Ubisoft,
+                            Level-5) avec l'affichage des jeux.</li>
+                        <li><strong>Phase 4 – Fonctionnalités :</strong> Implémentation des filtres, de la
+                            pagination, de la recherche et des favoris dans cet ordre.</li>
+                        <li><strong>Phase 5 – Finitions :</strong> Page 404 stylisée, mini-jeu Dino (petit bonus), page
+                            à-propos et
+                            documentation (README).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    Comment avez-vous géré votre temps ? Avez-vous défini des priorités ?
+                </button>
+                <div class="faq-answer">
+                    <p>J'ai priorisé les fonctionnalités obligatoires avant les bonus :</p>
+                    <ul>
+                        <li><strong>Priorité haute :</strong> Connexion à l'API, affichage des jeux, filtres et
+                            pagination (FT1-FT3) car ce sont les fonctionnalités de base attendues.</li>
+                        <li><strong>Priorité moyenne :</strong> Favoris (FT4), recherche et page détails, qui
+                            enrichissent l'expérience utilisateur.</li>
+                        <li><strong>Priorité basse :</strong> Bonus visuels (page 404, mini-jeu Dino),
+                            documentation et finitions CSS.</li>
+                    </ul>
+                    <p>Cette approche m'a permis d'avoir un site fonctionnel rapidement avant d'ajouter les
+                        améliorations.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    Quelle stratégie avez-vous adoptée pour vous documenter ?
+                </button>
+                <div class="faq-answer">
+                    <p>Ma stratégie de documentation s'est basée sur plusieurs sources :</p>
+                    <ul>
+                        <li><strong>Documentation officielle IGDB :</strong> Pour comprendre les endpoints, les champs
+                            disponibles et le format des requêtes Apicalypse. J'ai jamais au tant lu.</li>
+                        <li><strong>Documentation Go :</strong> Pour les packages standards (net/http, html/template,
+                            encoding/json).</li>
+                        <li><strong>Postman :</strong> Pour tester et valider les requêtes API avant de les intégrer
+                            dans le code.</li>
+                        <li><strong>Cours Ynov :</strong> Les exemples du professeur ont servi de base pour
+                            implémenter les fonctionnalités.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+                    Quelles difficultés avez-vous rencontrées ?
+                </button>
+                <div class="faq-answer">
+                    <ul>
+                        <li><strong>Authentification API :</strong> La gestion du token Twitch avec expiration j'en
+                            pouvais plus j'ai trouver un indien qui ma aider avec une video </li>
+                        <li><strong>Filtres cumulatifs :</strong> Combiner plusieurs filtres (catégorie + genre +
+                            plateforme) tout en gardant les checkboxes cochées après soumission du formulaire.</li>
+                        <li><strong>Pagination + Filtres :</strong> Conserver les filtres sélectionnés lors du
+                            changement de page.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-tech">
+            <h2>Technologies utilisées</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <strong>Go</strong>
+                    <span>Backend & serveur HTTP</span>
+                </div>
+                <div class="tech-item">
+                    <strong>HTML</strong>
+                    <span>Structure des pages</span>
+                </div>
+                <div class="tech-item">
+                    <strong>CSS</strong>
+                    <span>Design & animations</span>
+                </div>
+                <div class="tech-item">
+                    <strong>JavaScript</strong>
+                    <span>Carrousel & mini-jeu</span>
+                </div>
+                <div class="tech-item">
+                    <strong>API IGDB</strong>
+                    <span>Données des jeux</span>
+                </div>
+                <div class="tech-item">
+                    <strong>JSON</strong>
+                    <span>Stockage favoris</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="about-footer">
+        <p>Groupie Tracker – Projet Ynov B1 Informatique – 2026</p>
+    </footer>
+
+</body>
+
+</html>
+{{end}}

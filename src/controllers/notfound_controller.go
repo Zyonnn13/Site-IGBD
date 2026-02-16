@@ -13,3 +13,7 @@ func NotFoundDisplay(w http.ResponseWriter, r *http.Request) {
 func DinoDisplay(w http.ResponseWriter, r *http.Request) {
 	templates.RenderTemplate(w, r, "dino", nil)
 }
+
+func AboutDisplay(w http.ResponseWriter, r *http.Request) {
+	templates.RenderTemplate(w, r, "about", nil)
+}

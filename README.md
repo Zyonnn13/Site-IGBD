@@ -1,12 +1,12 @@
 # Groupie Tracker - IGDB
 
-Un site web en Go qui utilise l'API IGDB (Internet Game Database) pour afficher les catalogues de jeux vidéo de différents studios : **SEGA**, **Nintendo**, **Ubisoft** et **Level-5**.
+Un site web en Go qui utilise l'API IGDB (Internet Game Database) pour afficher les catalogues de jeux vidéo de différents studios : **SEGA**, **Nintendo**, **Ubisoft** et **Level-5**. Le but de ce projet est de s'entraîner à utiliser les API et à créer des sites web en Go. De plus il permet de faire decouvrir des jeux vidéo au utilisateurs.
 
 ## Fonctionnalités
 
 - **Catalogue par studio** — Parcourir les jeux de SEGA, Nintendo, Ubisoft et Level-5
-- **Fiche détaillée** — Afficher les détails d'un jeu (description, note, date de sortie, DLCs)
-- **Filtres cumulatifs** — Filtrer par catégorie, genre et plateforme (les filtres se combinent)
+- **Fiche détaillée** — Afficher les détails d'un jeu
+- **Filtres** — Filtrer par catégorie, genre et plateforme (les filtres se combinent)
 - **Pagination** — Navigation par pages (20 jeux par page)
 - **Recherche** — Rechercher un jeu par nom via la barre de recherche
 - **Favoris** — Ajouter/supprimer des jeux en favoris
@@ -21,7 +21,7 @@ Un site web en Go qui utilise l'API IGDB (Internet Game Database) pour afficher 
  **API IGDB** Source de données des jeux 
  **JSON** Stockage local des favoris 
 
-## 📁 Structure du projet
+## Structure du projet
 
 ```
 SIte_Api_IGBD/
@@ -42,7 +42,7 @@ SIte_Api_IGBD/
 └── go.mod                     # Module Go
 ```
 
-## 🚀 Lancement
+## Lancement
 
 ### Prérequis
 
@@ -53,7 +53,7 @@ SIte_Api_IGBD/
 
 ```bash
 # Cloner le projet
-git clone 
+git clone https://github.com/Zyonnn13/Site-IGBD.git
 cd SIte_Api_IGBD
 
 # Lancer le serveur
@@ -62,7 +62,7 @@ go run ./src/cmd/main.go
 
 Le serveur démarre sur **http://localhost:8080**
 
-## 📄 Pages disponibles
+## Pages disponibles
 
 | Route | Description |
 |---|---|
@@ -76,6 +76,6 @@ Le serveur démarre sur **http://localhost:8080**
 | `/favorites` | Page des favoris |
 | `/dino` | Mini-jeu Dino |
 
-## 👥 Auteurs
+##  Auteurs
 
-- **Belmonte** — Ynov B1 Informatique
+- **Clément BELMONDO** — Ynov B1 Informatique
