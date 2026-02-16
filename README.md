@@ -26,20 +26,20 @@ Un site web en Go qui utilise l'API IGDB (Internet Game Database) pour afficher 
 ```
 SIte_Api_IGBD/
 ├── src/
-│   ├── cmd/main.go            # Point d'entrée
-│   ├── controllers/           # Logique des handlers HTTP
-│   ├── models/                # Structures de données (Game, Genre, Platform...)
-│   ├── routers/               # Définition des routes
-│   ├── services/              # Appels API IGDB et gestion des favoris
-│   ├── helpers/               # Fonctions utilitaires
-│   └── templates/             # Chargement des templates Go
-├── templates/                 # Fichiers HTML (templates Go)
+│   ├── cmd/main.go           
+│   ├── controllers/           
+│   ├── models/                
+│   ├── routers/               
+│   ├── services/              
+│   ├── helpers/               
+│   └── templates/             
+├── templates/                 
 ├── assets/
-│   ├── css/                   # Feuilles de style
-│   ├── js/                    # Scripts JavaScript
-│   └── images/                # Images et sprites
-├── favorites.json             # Données des favoris
-└── go.mod                     # Module Go
+│   ├── css/                   
+│   ├── js/                    
+│   └── images/                
+├── favorites.json             
+└── go.mod                     
 ```
 
 ## Lancement
