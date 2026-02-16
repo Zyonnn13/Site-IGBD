@@ -1,0 +1,151 @@
+{{define "sega"}}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEGA - Catalogue des Jeux</title>
+    <link rel="stylesheet" href="/static/css/store.css">
+    <link rel="icon" type="image/png" href="/static/images/favicon.png">
+</head>
+
+<body>
+    <header class="store-header">
+        <a href="/" class="logo">IGDB</a>
+        <nav>
+            <a href="/">Accueil</a>
+            <a href="/level5">Level-5</a>
+            <a href="/nintendo">Nintendo</a>
+            <a href="/sega" class="active">SEGA</a>
+            <a href="/ubisoft">Ubisoft</a>
+            <a href="/favorites">Favoris</a>
+        </nav>
+        <form action="/search" method="get" class="search-form">
+            <input type="text" name="query" placeholder="Rechercher un jeu..." class="search-input">
+            <button type="submit" class="search-btn">🔍</button>
+        </form>
+    </header>
+
+    <main class="store-container">
+        <div class="store-hero"
+            style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('/static/images/sega-bg.webp');">
+            <h1>SEGA</h1>
+            <p>Découvrez le catalogue complet des jeux SEGA</p>
+            <span class="game-count">{{len .Games}} / {{.FilteredCount}} jeux affichés (page {{.Page}})</span>
+        </div>
+
+        <!-- Formulaire de filtrage côté serveur -->
+        <form action="" method="get" class="filters" id="filter-form">
+            <div class="filter-group">
+                <span class="filter-label">Type :</span>
+                <label class="checkbox-label">
+                    <input type="checkbox" name="categories" value="0" {{if contains $.SelectedCategories "0"
+                        }}checked{{end}} onchange="this.form.submit()">
+                    <span>Jeu</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" name="categories" value="1" {{if contains $.SelectedCategories "1"
+                        }}checked{{end}} onchange="this.form.submit()">
+                    <span>DLC</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" name="categories" value="2" {{if contains $.SelectedCategories "2"
+                        }}checked{{end}} onchange="this.form.submit()">
+                    <span>Extension</span>
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" name="categories" value="3" {{if contains $.SelectedCategories "3"
+                        }}checked{{end}} onchange="this.form.submit()">
+                    <span>Bundle</span>
+                </label>
+            </div>
+
+            <div class="filter-group">
+                <span class="filter-label">Genre :</span>
+                {{range .AllGenres}}
+                <label class="checkbox-label">
+                    <input type="checkbox" name="genres" value="{{. | lower}}" {{if contains $.SelectedGenres (. |
+                        lower)}}checked{{end}} onchange="this.form.submit()">
+                    <span>{{.}}</span>
+                </label>
+                {{end}}
+            </div>
+
+            <div class="filter-group">
+                <span class="filter-label">Plateforme :</span>
+                {{range .AllPlatforms}}
+                <label class="checkbox-label">
+                    <input type="checkbox" name="platforms" value="{{. | lower}}" {{if contains $.SelectedPlatforms (. |
+                        lower)}}checked{{end}} onchange="this.form.submit()">
+                    <span>{{.}}</span>
+                </label>
+                {{end}}
+            </div>
+
+            <a href="/sega" class="filter-btn">Réinitialiser</a>
+        </form>
+
+        <div class="games-grid">
+            {{range .Games}}
+            <a href="/game?id={{.ID}}" class="game-card" data-category="{{.Category}}">
+                <div class="card-image">
+                    <img src="{{.Cover.URL}}" alt="{{.Name}}" loading="lazy">
+                    <span class="type-badge 
+                        {{if eq .Category 0}}badge-game{{end}}
+                        {{if eq .Category 1}}badge-dlc{{end}}
+                        {{if eq .Category 2}}badge-expansion{{end}}
+                        {{if eq .Category 3}}badge-bundle{{end}}
+                        {{if eq .Category 4}}badge-standalone{{end}}
+                    ">
+                        {{if eq .Category 0}}Jeu{{end}}
+                        {{if eq .Category 1}}DLC{{end}}
+                        {{if eq .Category 2}}Extension{{end}}
+                        {{if eq .Category 3}}Bundle{{end}}
+                        {{if eq .Category 4}}Standalone{{end}}
+                        {{if gt .Category 4}}Autre{{end}}
+                    </span>
+                </div>
+                <div class="card-info">
+                    <h3>{{.Name}}</h3>
+                    {{if .Rating}}
+                    <div class="rating">
+                        <span class="stars">etoile</span>
+                        <span>{{printf "%.0f" .Rating}}%</span>
+                    </div>
+                    {{end}}
+                    {{if .Genres}}
+                    <div class="genres">
+                        {{range $i, $g := .Genres}}{{if $i}}, {{end}}{{$g.Name}}{{end}}
+                    </div>
+                    {{end}}
+                </div>
+            </a>
+            {{else}}
+            <div class="no-results">
+                <p>Aucun jeu trouvé avec ces filtres.</p>
+                <a href="/sega" class="filter-btn active">Réinitialiser les filtres</a>
+            </div>
+            {{end}}
+        </div>
+
+        {{if .ShowPagination}}
+        <div class="pagination">
+            {{if gt .Page 0}}
+            <a href="?page={{.Prev}}{{.FilterQuery}}" class="pagination-btn">← Précédent</a>
+            {{end}}
+            <span class="pagination-info">Page {{.Page}}</span>
+            {{if gt .FilteredCount 0}}
+            <a href="?page={{.Next}}{{.FilterQuery}}" class="pagination-btn">Suivant →</a>
+            {{end}}
+        </div>
+        {{end}}
+    </main>
+
+    <footer>
+        <p>© 2026 IGDB - Groupie Tracker</p>
+    </footer>
+</body>
+
+</html>
+{{end}}

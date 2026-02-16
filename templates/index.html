@@ -1,0 +1,100 @@
+{{define "index"}}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IGDB - Gaming</title>
+    <link rel="stylesheet" href="/static/css/store.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" type="image/png" href="/static/images/favicon.png">
+</head>
+
+<body>
+
+    <header class="store-header">
+        <a href="/" class="logo">IGDB</a>
+        <nav>
+            <a href="/" class="active">Accueil</a>
+            <a href="/level5">Level-5</a>
+            <a href="/nintendo">Nintendo</a>
+            <a href="/sega">SEGA</a>
+            <a href="/ubisoft">Ubisoft</a>
+            <a href="/favorites">Favoris</a>
+        </nav>
+        <form action="/search" method="get" class="search-form">
+            <input type="text" name="query" placeholder="Rechercher un jeu..." class="search-input">
+            <button type="submit" class="search-btn">🔍</button>
+        </form>
+    </header>
+
+    <div class="carousel">
+        <div class="list">
+
+            <div class="item" style="background-image: url('/static/images/level-5.webp');">
+                <div class="content">
+                    <div class="title">EDITEUR</div>
+                    <div class="name">LEVEL-5</div>
+                    <div class="des">Découvrez des RPG incroyables incluant Professor Layton, Yo-kai Watch, et la
+                        légendaire série Ni no Kuni.</div>
+                    <div class="btn">
+                        <button onclick="window.location.href='/level5'">Voir plus</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item" style="background-image: url('/static/images/nintendo-bg.webp');">
+                <div class="content">
+                    <div class="title">EDITEUR</div>
+                    <div class="name">NINTENDO</div>
+                    <div class="des">Retrouvez les icônes du jeu vidéo : Mario, Zelda, Pokémon et bien d'autres
+                        exclusivités Nintendo.</div>
+                    <div class="btn">
+                        <button onclick="window.location.href='/nintendo'">Voir plus</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item" style="background-image: url('/static/images/sega-bg.webp');">
+                <div class="content">
+                    <div class="title">EDITEUR</div>
+                    <div class="name">SEGA</div>
+                    <div class="des">Foncez avec Sonic, menez bataille dans Total War et plongez dans l'univers des
+                        Yakuza grâce au vaste catalogue SEGA.</div>
+                    <div class="btn">
+                        <button onclick="window.location.href='/sega'">Voir plus</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item" style="background-image: url('/static/images/ubisoft-bg.webp');">
+                <div class="content">
+                    <div class="title">EDITEUR</div>
+                    <div class="name">UBISOFT</div>
+                    <div class="des">Explorez l'histoire avec Assassin's Creed, survivez à la folie de Far Cry et
+                        rejoignez l'élite dans Rainbow Six Siege.</div>
+                    <div class="btn">
+                        <button onclick="window.location.href='/ubisoft'">Voir plus</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="arrows">
+            <button class="prev">&lt;</button>
+            <button class="next">&gt;</button>
+        </div>
+
+
+        <div class="timeRunning"></div>
+
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+
+</html>
+{{end}}

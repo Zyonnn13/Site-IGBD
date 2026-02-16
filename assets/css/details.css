@@ -1,0 +1,445 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #0a0a0f;
+    color: #fff;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Hero Background */
+.hero-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(20px);
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.hero-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(10, 10, 15, 0.8) 0%, rgba(10, 10, 15, 1) 100%);
+}
+
+/* Header */
+.details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.details-header .logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #f1683a;
+    text-decoration: none;
+}
+
+.details-header nav {
+    display: flex;
+    gap: 25px;
+}
+
+.details-header nav a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.details-header nav a:hover {
+    color: #f1683a;
+}
+
+/* Search Form */
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-input {
+    padding: 8px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-radius: 20px;
+    font-size: 13px;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    width: 200px;
+    transition: all 0.3s;
+}
+
+.search-input::placeholder {
+    color: #888;
+}
+
+.search-input:focus {
+    border-color: #f1683a;
+    background: rgba(255, 255, 255, 0.15);
+    width: 250px;
+}
+
+.search-btn {
+    padding: 8px 14px;
+    background: #f1683a;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.search-btn:hover {
+    background: #e05530;
+    transform: scale(1.05);
+}
+
+/* Container */
+.details-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Game Hero */
+.game-hero {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.cover-section {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.game-cover {
+    width: 300px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.type-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.badge-game {
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+}
+
+.badge-dlc {
+    background: linear-gradient(135deg, #9C27B0, #6A1B9A);
+}
+
+.badge-expansion {
+    background: linear-gradient(135deg, #2196F3, #1565C0);
+}
+
+.badge-bundle {
+    background: linear-gradient(135deg, #FF9800, #E65100);
+}
+
+.badge-standalone {
+    background: linear-gradient(135deg, #00BCD4, #00838F);
+}
+
+/* Info Section */
+.info-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.game-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.rating-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    background: linear-gradient(135deg, #f1683a, #ff8a5c);
+    padding: 15px 25px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    width: fit-content;
+}
+
+.rating-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.rating-label {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.genre-tag {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.platforms h4 {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.platform-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.platform-tag {
+    background: rgba(241, 104, 58, 0.2);
+    color: #f1683a;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.back-btn {
+    padding: 12px 25px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+    width: fit-content;
+}
+
+.back-btn:hover {
+    background: #f1683a;
+    border-color: #f1683a;
+}
+
+/* Favorite Button */
+.fav-btn {
+    padding: 14px 30px;
+    background: linear-gradient(135deg, #e91e63, #c2185b);
+    border: 2px solid #e91e63;
+    color: #fff;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    width: fit-content;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    letter-spacing: 0.3px;
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+}
+
+.fav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(233, 30, 99, 0.5);
+    background: linear-gradient(135deg, #f06292, #e91e63);
+}
+
+.fav-btn.fav-active {
+    background: linear-gradient(135deg, #ad1457, #880e4f);
+    border-color: #ad1457;
+    box-shadow: 0 4px 15px rgba(173, 20, 87, 0.4);
+}
+
+.fav-btn.fav-active:hover {
+    background: linear-gradient(135deg, #c62828, #b71c1c);
+    border-color: #c62828;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(198, 40, 40, 0.5);
+}
+
+/* Game Content */
+.game-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.game-content section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #f1683a;
+}
+
+.description-section p,
+.storyline-section p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #ccc;
+}
+
+/* Screenshots */
+.screenshots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.screenshot-item {
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.screenshot-item:hover {
+    transform: scale(1.02);
+}
+
+.screenshot-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* DLC Section */
+.dlc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.dlc-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.dlc-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(241, 104, 58, 0.2);
+}
+
+.dlc-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.dlc-info {
+    padding: 15px;
+}
+
+.dlc-info h4 {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.dlc-badge {
+    font-size: 11px;
+    background: rgba(156, 39, 176, 0.3);
+    color: #ce93d8;
+    padding: 4px 10px;
+    border-radius: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #555;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 50px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .details-header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .details-header nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .game-hero {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .game-cover {
+        width: 200px;
+    }
+
+    .game-title {
+        font-size: 2rem;
+    }
+
+    .genres,
+    .platform-list {
+        justify-content: center;
+    }
+
+    .back-btn {
+        margin: 0 auto;
+    }
+
+    .screenshots-grid {
+        grid-template-columns: 1fr;
+    }
+}

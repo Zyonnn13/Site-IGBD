@@ -1,0 +1,88 @@
+{{define "search"}}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recherche : {{.Query}} - IGDB</title>
+    <link rel="stylesheet" href="/static/css/store.css">
+    <link rel="icon" type="image/png" href="/static/images/favicon.png">
+</head>
+
+<body>
+    <header class="store-header">
+        <a href="/" class="logo">IGDB</a>
+        <nav>
+            <a href="/">Accueil</a>
+            <a href="/level5">Level-5</a>
+            <a href="/nintendo">Nintendo</a>
+            <a href="/sega">SEGA</a>
+            <a href="/ubisoft">Ubisoft</a>
+            <a href="/favorites">Favoris</a>
+        </nav>
+        <form action="/search" method="get" class="search-form">
+            <input type="text" name="query" placeholder="Rechercher un jeu..." value="{{.Query}}" class="search-input">
+            <button type="submit" class="search-btn">🔍</button>
+        </form>
+    </header>
+
+    <main class="store-container">
+        <div class="store-hero"
+            style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), linear-gradient(135deg, #667eea, #764ba2);">
+            <h1>🔍 Résultats de recherche</h1>
+            <p>Recherche pour "{{.Query}}"</p>
+            <span class="game-count">{{.Count}} résultat(s) trouvé(s)</span>
+        </div>
+
+        <div class="games-grid">
+            {{range .Results}}
+            <a href="/game?id={{.Game.ID}}" class="game-card">
+                <div class="card-image">
+                    <img src="{{.Game.Cover.URL}}" alt="{{.Game.Name}}" loading="lazy">
+                    <span class="type-badge 
+                        {{if eq .Game.Category 0}}badge-game{{end}}
+                        {{if eq .Game.Category 1}}badge-dlc{{end}}
+                        {{if eq .Game.Category 2}}badge-expansion{{end}}
+                        {{if eq .Game.Category 3}}badge-bundle{{end}}
+                        {{if eq .Game.Category 4}}badge-standalone{{end}}
+                    ">
+                        {{if eq .Game.Category 0}}Jeu{{end}}
+                        {{if eq .Game.Category 1}}DLC{{end}}
+                        {{if eq .Game.Category 2}}Extension{{end}}
+                        {{if eq .Game.Category 3}}Bundle{{end}}
+                        {{if eq .Game.Category 4}}Standalone{{end}}
+                        {{if gt .Game.Category 4}}Autre{{end}}
+                    </span>
+                </div>
+                <div class="card-info">
+                    <h3>{{.Game.Name}}</h3>
+                    {{if .Game.Rating}}
+                    <div class="rating">
+                        <span class="stars">etoile</span>
+                        <span>{{printf "%.0f" .Game.Rating}}%</span>
+                    </div>
+                    {{end}}
+                    {{if .Game.Genres}}
+                    <div class="genres">
+                        {{range $i, $g := .Game.Genres}}{{if $i}}, {{end}}{{$g.Name}}{{end}}
+                    </div>
+                    {{end}}
+                </div>
+            </a>
+            {{else}}
+            <div class="no-results">
+                <p>Aucun jeu trouvé pour "{{$.Query}}".</p>
+                <a href="/" class="filter-btn active">Retour à l'accueil</a>
+            </div>
+            {{end}}
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 IGDB - Groupie Tracker</p>
+    </footer>
+</body>
+
+</html>
+{{end}}
